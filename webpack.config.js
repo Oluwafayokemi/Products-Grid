@@ -12,19 +12,8 @@ module.exports = {
         },
       },
       {
-        test: /\.(css|scss)$/,
-        use: ['style-loader', 'css-loader', 'sass-loader'],
-      },
-      {
-        test: /\.css$/,
-        loader: 'css-loader',
-        options: {
-          modules: true,
-          importLoaders: 1,
-          localIdentName: '[name]_[local]_[hash:base64]',
-          sourceMap: true,
-          minimize: true,
-        },
+        test:/\.css$/,
+        use:['style-loader','css-loader']
       },
       {
         test: /\.(gif|png|jpe?g|svg)$/i,
