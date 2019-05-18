@@ -7,12 +7,17 @@
   "scripts": {
     "start": "json-server server/index.js --routes server/routes.json --middlewares server/handle-delay.js server/handle-ads.js",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start:js": "webpack-dev-server --mode development --open --hot",
+    "start:src": "webpack-dev-server --mode development --open --hot",
     "build": "webpack --mode production"
   },
   "author": "",
   "license": "",
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^1.2.18",
+    "@fortawesome/free-solid-svg-icons": "^5.8.2",
+    "@fortawesome/react-fontawesome": "^0.1.4",
+    "antd": "^3.18.1",
+    "axios": "^0.18.0",
     "cool-ascii-faces": "^1.3.4",
     "json-server": "^0.9.6",
     "react": "^16.8.6",
@@ -22,14 +27,20 @@
     "react-router-redux": "^4.0.8",
     "redux": "^4.0.1",
     "redux-logger": "^3.0.6",
-    "redux-thunk": "^2.3.0"
+    "redux-thunk": "^2.3.0",
+    "styled-components": "^4.2.0"
   },
   "devDependencies": {
     "@babel/core": "^7.4.4",
+    "@babel/plugin-proposal-class-properties": "^7.4.4",
+    "@babel/plugin-syntax-dynamic-import": "^7.2.0",
+    "@babel/plugin-transform-runtime": "^7.4.4",
     "@babel/preset-env": "^7.4.4",
     "@babel/preset-react": "^7.0.0",
     "babel-loader": "^8.0.6",
+    "css-loader": "^2.1.1",
     "react-hot-loader": "^4.8.4",
+    "style-loader": "^0.23.1",
     "webpack": "^4.31.0",
     "webpack-cli": "^3.3.2",
     "webpack-dev-server": "^3.3.1"
