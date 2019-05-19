@@ -13,25 +13,31 @@ const filterTags = [
   },
   {
     title: "Size"
+  },
+  {
+    title: "Id"
   }
 ]
 
 // Constant
 const TITLE = "Asci faces"
-export const SideBar = () => (
+export const SideBar = ({ filterProducts }) => (
   <Container>
     <ul>
       <h1>{TITLE}</h1>
     </ul>
     <ul>Filters</ul>
-    {filterTags && filterTags.map((tag, index) => (
-      <ul key={index} className="price">
-        <span>{tag.title}</span>
-        <span className="icon">
-          <FontAwesomeIcon icon="plus" />
-        </span>
-      </ul>
-    ))}
+    {filterTags && filterTags.map((tag, index) => {
+      const filter = tag.title === "Price" ? "price" : tag.title === "Size" ? "size" : tag.title === "Id" ? "id" : '';
+      return (
+        <ul key={index} className="price">
+          <span>{tag.title}</span>
+          <span className="icon" >
+            <FontAwesomeIcon icon="plus" onClick={() => filterProducts(filter)} />
+          </span>
+        </ul>
+      )
+    })}
   </Container>
 )
 const Container = styled.div`

@@ -15,18 +15,20 @@ export const isLoading = payload => ({
 });
 
 
-export const fetchProducts = request => async (dispatch) => {
+export const fetchProducts = (request) => async (dispatch) => {
+  const sortTag = request && request.productTag
   dispatch(isLoading(true))
   try {
+    const url = sortTag ? `/products?_sort=${sortTag}` : "/products?_page=10&_limit=15"
     const response = await fetchData({
       method: 'get',
-      url: '/products?_page=10&_limit=15',
+      url,
       header: {
         'Content-Type': 'application/json',
       },
       data: request,
     });
-    if(response.status === 200) {
+    if (response.status === 200) {
       dispatch(getAllProducts(response.data))
       dispatch(isLoading(false))
     }

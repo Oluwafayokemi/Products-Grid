@@ -13,10 +13,10 @@ import { Products } from './Product';
  * @description displays layout of the app
  * @returns {ReactElement}
  */
-export const Layout = ({products}) => (
+export const Layout = ({products, filterProducts }) => (
   <Container>
     <Sider>
-      <SideBar />
+      <SideBar filterProducts={filterProducts} />
     </Sider>
     <Content>
       <Header>
@@ -44,7 +44,7 @@ const Sider = styled.div`
 const Content = styled.div`
   width: 80%;
   background-color: #ead7ed;
-  
+  height: 100vh;
 `;
 
 const Header = styled.div`
@@ -57,4 +57,6 @@ const Main = styled.div`
   display: flex;
   flex-flow: row wrap;
   width: 100%;
+  max-height: 90vh;
+  overflow: scroll;
 `;
