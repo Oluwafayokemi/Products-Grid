@@ -27,6 +27,7 @@ export class HomePage extends React.Component {
     const { props } = this;
     const { getProducts } = props;
     getProducts();
+    this.scrollRef = React.createRef();
   }
 
   componentDidUpdate(prevProps, prevState) {
@@ -80,8 +81,17 @@ export class HomePage extends React.Component {
     })
   }
 
+  /**
+   * @function fetchMore
+   * @description fucntion to get more items on pagination
+   */
+  fetchMore = async ({ next, last, page }) => {
+    console.log('important scroll just shoed up')
+
+  }
+
   render() {
-    const { props, state, handleSizeChange, filterProducts } = this
+    const { props, state, handleSizeChange, filterProducts, scrollRef, fetchMore } = this
     const { products, value, target } = state;
     const { loading } = props;
     return (
@@ -94,6 +104,8 @@ export class HomePage extends React.Component {
           filterProducts={filterProducts}
           handleSizeChange={handleSizeChange}
           target={target}
+          scrollRef={scrollRef}
+          fetchMore={fetchMore}
         />
     )
   }

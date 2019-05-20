@@ -13,7 +13,7 @@ import { Products } from './Product';
  * @description displays layout of the app
  * @returns {ReactElement}
  */
-export const Layout = ({ products, filterProducts, handleSizeChange, value, target }) => (
+export const Layout = ({ products, filterProducts, handleSizeChange, value, target, scrollRef, fetchMore }) => (
   <Container>
     <Sider>
       <SideBar filterProducts={filterProducts} />
@@ -22,14 +22,16 @@ export const Layout = ({ products, filterProducts, handleSizeChange, value, targ
       <Header>
 
       </Header>
-      <Main>
-        <Products
-          products={products}
-          handleSizeChange={handleSizeChange}
-          value={value}
-          target={target}
-        />
-      </Main>
+      <Wrapper ref={scrollRef} >
+        <Main>
+          <Products
+            products={products}
+            handleSizeChange={handleSizeChange}
+            value={value}
+            target={target}
+          />
+        </Main>
+      </Wrapper>
     </Content>
   </Container>
 )
@@ -39,6 +41,11 @@ const Container = styled.div`
   display: flex;
   height: 100%;
   margin-top: 0;
+`;
+
+const Wrapper = styled.div`
+  overflow: scroll;
+  max-height: 850px;
 `;
 
 const Sider = styled.div`
@@ -62,6 +69,4 @@ const Main = styled.div`
   display: flex;
   flex-flow: row wrap;
   width: 100%;
-  max-height: 90vh;
-  overflow: scroll;
 `;
