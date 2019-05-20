@@ -17,8 +17,10 @@ import { Spinner } from '../commons/spinner';
 export class HomePage extends React.Component {
 
   state = {
-    faceProducts: {},
-    productTag: ""
+    products: {},
+    productTag: "",
+    value: '',
+    target: false
   }
 
   componentDidMount() {
@@ -38,8 +40,8 @@ export class HomePage extends React.Component {
     // Calls getProduct when productTag state changes and filters by product tag
     if (prevState.productTag !== nextState.productTag) {
       const { getProducts } = this.props;
-      const {productTag} = this.state;
-      getProducts({productTag});
+      const { productTag } = this.state;
+      getProducts({ productTag });
     }
   }
 
@@ -60,19 +62,39 @@ export class HomePage extends React.Component {
   setProduct = () => {
     const { products } = this.props;
     this.setState({
-      faceProducts: products
+      products
+    })
+  }
+
+  /**
+   * @method handleSizeChange
+   * @description onChange event handler to detect input value for size change
+   */
+  handleSizeChange = (id) => (event) => {
+    const value = event.target.value
+    this.setState(() => {
+      return {
+        value,
+        target: id,
+      }
     })
   }
 
   render() {
-    const { props, state, filterProducts } = this
-    const { faceProducts } = state;
-    const { loading } = props
+    const { props, state, handleSizeChange, filterProducts } = this
+    const { products, value, target } = state;
+    const { loading } = props;
     return (
       loading ?
         <Spinner />
         :
-        <Layout products={faceProducts} filterProducts={filterProducts} />
+        <Layout
+          value={value}
+          products={products}
+          filterProducts={filterProducts}
+          handleSizeChange={handleSizeChange}
+          target={target}
+        />
     )
   }
 }

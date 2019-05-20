@@ -13,7 +13,7 @@ import { Products } from './Product';
  * @description displays layout of the app
  * @returns {ReactElement}
  */
-export const Layout = ({products, filterProducts }) => (
+export const Layout = ({ products, filterProducts, handleSizeChange, value, target }) => (
   <Container>
     <Sider>
       <SideBar filterProducts={filterProducts} />
@@ -23,7 +23,12 @@ export const Layout = ({products, filterProducts }) => (
 
       </Header>
       <Main>
-        <Products products={products}/>
+        <Products
+          products={products}
+          handleSizeChange={handleSizeChange}
+          value={value}
+          target={target}
+        />
       </Main>
     </Content>
   </Container>
@@ -43,13 +48,13 @@ const Sider = styled.div`
 
 const Content = styled.div`
   width: 80%;
-  background-color: #ead7ed;
+  background-color: #fff7fd;
   height: 100vh;
 `;
 
 const Header = styled.div`
   display: flex;
-  background-color: gray;
+  /* background-color: gray; */
   height: 40px;
 `;
 const Main = styled.div`
