@@ -7,6 +7,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
+// Array of filter labels
 const filterTags = [
   {
     title: "Price"
@@ -24,9 +25,9 @@ const TITLE = "Asci faces"
 export const SideBar = ({ filterProducts }) => (
   <Container>
     <ul>
-      <h1>{TITLE}</h1>
+      <h1 className="dark">{TITLE}</h1>
     </ul>
-    <ul>Filters</ul>
+    <ul className="dark">Filters</ul>
     {filterTags && filterTags.map((tag, index) => {
       const filter = tag.title === "Price" ? "price" : tag.title === "Size" ? "size" : tag.title === "Id" ? "id" : '';
       return (
@@ -41,7 +42,7 @@ export const SideBar = ({ filterProducts }) => (
   </Container>
 )
 const Container = styled.div`
-  color: grey;
+  color: #5b5e63;
   padding: 1em;
   .price {
     display: flex;
@@ -49,5 +50,8 @@ const Container = styled.div`
   }
   .icon {
     cursor: pointer;
+  }
+  .dark{
+    color: #000;
   }
 `

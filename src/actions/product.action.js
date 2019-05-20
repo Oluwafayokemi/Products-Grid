@@ -16,10 +16,10 @@ export const isLoading = payload => ({
 
 
 export const fetchProducts = (request) => async (dispatch) => {
-  const sortTag = request && request.productTag
   dispatch(isLoading(true))
+  const sortTag = request && request.productTag
   try {
-    const url = sortTag ? `/products?_sort=${sortTag}` : "/products?_page=10&_limit=15"
+    const url = sortTag ? `/products?_sort=${sortTag}` : "/products"
     const response = await fetchData({
       method: 'get',
       url,
@@ -36,8 +36,8 @@ export const fetchProducts = (request) => async (dispatch) => {
       status: response.data.status,
       message: response.data.message,
     });
-    return console.log(error.message);
+    return console.error(error.message);
   } catch (error) {
-    return console.log(error.message);
+    return console.error(error.message);
   }
 }

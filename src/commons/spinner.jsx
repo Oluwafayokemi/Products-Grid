@@ -5,36 +5,29 @@
 // Modules
 import React from 'react'
 import styled from 'styled-components';
-import { Icon, Spin } from 'antd';
+import spin from '../util/spin.gif';
 
 /**
  * @function Spinner
  * @description define a loading indicator
  * @return reactElement
  */
-export const Spinner = ({ fontSize = 50, spinnerClass }) => {
-  const SPINSTYLE = {
-    fontSize
-  }
-  const antIcon = <Icon type='loading' style={SPINSTYLE} spin />
-  const spinnerClassName = spinnerClass || 't-spinner-body';
-
+export const Spinner = () => {
   return (
     <Div>
-      <div className={spinnerClassName}>
-        <Spin indicator={antIcon} />
+      <div className={'t-spinner-body'}>
+        <img src={spin} />
       </div>
     </Div>
   )
 }
 const Div = styled.div`
-    .t-spinner-body {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    margin-top: 200px;
-    color: blue;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 40%;
+  height: auto;
+  padding-top: 9em;
 }
 
 
