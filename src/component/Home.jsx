@@ -86,7 +86,6 @@ export class HomePage extends React.Component {
    * @description fucntion to get more items on pagination
    */
   fetchMore = async ({ next, last, page }) => {
-    console.log('important scroll just shoed up')
 
   }
 

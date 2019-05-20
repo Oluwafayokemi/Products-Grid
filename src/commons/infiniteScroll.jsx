@@ -31,7 +31,6 @@ export class InfiniteScroll extends React.Component {
     if ('MutationObserver' in window) {
       const { initialHeight } = this.state;
       const observer = new MutationObserver(mutations => {
-        console.log('mutation@@@@@@@@@@@@')
         mutations.forEach(mutation => {
           if (mutation.type === 'childList') {
             let state = { divHeight: mutation.target.clientHeight };

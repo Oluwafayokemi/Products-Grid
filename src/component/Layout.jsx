@@ -7,6 +7,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { SideBar } from './SideBar';
 import { Products } from './Product';
+import { InfiniteScroll } from '../commons/infiniteScroll';
 
 /**
  * @function Layout
@@ -23,14 +24,22 @@ export const Layout = ({ products, filterProducts, handleSizeChange, value, targ
 
       </Header>
       <Wrapper ref={scrollRef} >
-        <Main>
-          <Products
-            products={products}
-            handleSizeChange={handleSizeChange}
-            value={value}
-            target={target}
-          />
-        </Main>
+        <InfiniteScroll
+          action={fetchMore}
+          scrollRef={scrollRef}
+          pageLabel='page'
+          nextLabel='next'
+          lastLabel='last'
+        >
+          <Main>
+            <Products
+              products={products}
+              handleSizeChange={handleSizeChange}
+              value={value}
+              target={target}
+            />
+          </Main>
+        </InfiniteScroll>
       </Wrapper>
     </Content>
   </Container>
@@ -61,7 +70,6 @@ const Content = styled.div`
 
 const Header = styled.div`
   display: flex;
-  /* background-color: gray; */
   height: 40px;
 `;
 const Main = styled.div`
